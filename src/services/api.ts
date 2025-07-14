@@ -4,8 +4,10 @@
 import axios from 'axios';
 import { ApiResponse, BudgetInsight, Expense, CategoryTotals } from '../types';
 
-// We'll use port 3001 for the React version backend
-const API_BASE_URL = 'http://localhost:3001/api';
+// Use relative URLs in production, localhost in development
+const API_BASE_URL = process.env.NODE_ENV === 'production' 
+  ? '/api' 
+  : 'http://localhost:3001/api';
 
 // Create axios instance with base configuration
 const api = axios.create({
